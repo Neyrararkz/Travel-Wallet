@@ -16,6 +16,7 @@ export default function Trips({ trips, dispatch }) {
   function handleSubmit(e) {
     e.preventDefault();
     if (!(Number(budget) > 0)) return setFormError('Укажите бюджет больше нуля');
+    if (!startDate || !endDate) return setFormError('Укажите даты поездки');
     if (endDate < startDate) return setFormError('Дата конца раньше даты начала');
     setFormError('');
     dispatch({
@@ -39,10 +40,10 @@ export default function Trips({ trips, dispatch }) {
           <input type="number" min="1" value={budget} onChange={(e) => setBudget(e.target.value)} />
         </label>
         <label>С
-          <input type="date" value={startDate} onChange={(e) => setStartDate(e.target.value)} />
+          <input type="date" value={startDate} required onChange={(e) => setStartDate(e.target.value)} />
         </label>
         <label>По
-          <input type="date" value={endDate} onChange={(e) => setEndDate(e.target.value)} />
+          <input type="date" value={endDate} required onChange={(e) => setEndDate(e.target.value)} />
         </label>
         <button type="submit">Создать поездку</button>
         {formError && <p className="error full">{formError}</p>}

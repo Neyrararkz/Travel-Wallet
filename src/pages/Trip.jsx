@@ -87,7 +87,7 @@ export default function Trip({ trips, dispatch }) {
           </select>
         </label>
         <label>Дата
-          <input type="date" value={date} onChange={(e) => setDate(e.target.value)} />
+          <input type="date" value={date} required onChange={(e) => setDate(e.target.value)} />
         </label>
         <label className="full">Комментарий
           <input value={comment} onChange={(e) => setComment(e.target.value)} />
